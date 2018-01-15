@@ -18,6 +18,7 @@ class HolderView: UIView {
     let triangleLayer = TriangleLayer()
     let redRectangleLayer = RectangleLayer()
     let blueRectangleLayer = RectangleLayer()
+    let greenRectangleLayer = RectangleLayer()
     let arcLayer = ArcLayer()
     
     var parentFrame :CGRect = CGRect.zero
@@ -70,7 +71,7 @@ class HolderView: UIView {
         ovalLayer.contract()
         
         Timer.scheduledTimer(timeInterval: 0.45, target: self, selector: #selector(drawRedAnimatedRectangle), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 0.65, target: self, selector: #selector(drawBlueAnimatedRectangle), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.65, target: self, selector: #selector(drawGreenAnimatedRectangle), userInfo: nil, repeats: false)
     }
     
     @objc func drawRedAnimatedRectangle() {
@@ -85,6 +86,13 @@ class HolderView: UIView {
         Timer.scheduledTimer(timeInterval: 0.40, target: self, selector: #selector(drawArc), userInfo: nil, repeats: false)
     }
     
+    @objc func drawGreenAnimatedRectangle() {
+        layer.addSublayer(greenRectangleLayer)
+        greenRectangleLayer.animateStrokeWithColor(color: Colors.green)
+        
+        Timer.scheduledTimer(timeInterval: 0.40, target: self, selector: #selector(drawArc), userInfo: nil, repeats: false)
+    }
+    
     @objc func drawArc() {
         layer.addSublayer(arcLayer)
         arcLayer.animate()
@@ -95,7 +103,7 @@ class HolderView: UIView {
     
     @objc func expandView() {
         // 1
-        backgroundColor = Colors.blue
+        backgroundColor = Colors.green
         
         // 2
         frame = CGRect.init(x: frame.origin.x, y: frame.origin.y, width: frame.size.width + blueRectangleLayer.lineWidth*2, height: frame.size.height + blueRectangleLayer.lineWidth*2)
