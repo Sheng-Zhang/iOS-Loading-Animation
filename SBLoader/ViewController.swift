@@ -24,9 +24,9 @@ class ViewController: UIViewController, HolderViewDelegate {
         addHolderView()
     }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
   
   
     func addHolderView() {
