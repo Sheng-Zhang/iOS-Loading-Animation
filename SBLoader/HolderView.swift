@@ -21,6 +21,7 @@ class HolderView: UIView {
     let arcLayer = ArcLayer()
     
     var parentFrame :CGRect = CGRect.zero
+    
     weak var delegate:HolderViewDelegate?
   
     
